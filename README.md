@@ -1,3 +1,4 @@
+v 1.0
 # Hasura Github Integration Starter Kit
 
 Hasura's github integration automatically deploys your github projects using Hasura Cloud, providing automatic updates of your metadata and database migrations from your repo.
