@@ -1,0 +1,5 @@
+- "!include public_customer.yaml"
+- "!include public_customer_total_sales.yaml"
+- "!include public_employee.yaml"
+- "!include public_product.yaml"
+- "!include public_sale.yaml"
