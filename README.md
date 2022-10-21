@@ -1,6 +1,6 @@
 Tutorial
 --------
-- [Hasura GraphQL Endpoint](https://hasura.io/learn/graphql)
+- [Hasura GraphQL Endpoint](https://vivunapp.hasura.app/v1/graphql)
 
 Tech stack
 ----------
