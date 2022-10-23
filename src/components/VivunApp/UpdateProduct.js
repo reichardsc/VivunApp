@@ -1,35 +1,38 @@
-import React, {Fragment,useEffect, userEffect, useState} from 'react'
-import {useMutation, useQuery, gql} from '@apollo/client'
-import {LOAD_PRODUCTS} from '../../graphQL/Queries' 
-import {CREATE_PRODUCT, DELETE_PRODUCT} from '../../graphQL/Mutations' 
-import Product from "./Product";
+import React, {Fragment,useEffect, userEffect, useState} from 'react';
+import {useMutation, useQuery, gql} from '@apollo/client';
+import {LOAD_PRODUCTS} from '../../graphQL/Queries' ;
+import {UPDATE_PRODUCT} from '../../graphQL/Mutations' ;
 
 function UpdateProduct(){
     const [product_id, setProduct_id] = useState("");
     const {product_get_error, loading, data}  = useQuery(LOAD_PRODUCTS);
+    const [updateProduct, {update_error}] = useMutation(UPDATE_PRODUCT);
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    //const [deleteProduct, {delete_error}] = useMutation(DELETE_PRODUCT)
-    const [products, setProducts] = useState([])
-    const [del_product_id, setProduct] = useState([])
+    const [products, setProducts] = useState([]);
+
 
     useEffect(() => {
         if(data){
             setProducts(data.product);
+            setProduct_id(data.product[0].product_id);
         }
         
     }, [data]);
 
     const update_Product = () => {
-        // deleteProduct ({
-        //     variables: {
-        //         product_id: del_product_id
-        //     }
-        // })
+        updateProduct ({
+            variables: {
+                product_id: product_id,
+                name: name,
+                price: price
+            },
+            refetchQueries : [{query:LOAD_PRODUCTS }]
+        })
 
-        // if(delete_error){
-        //     console.log(delete_error);
-        // }
+        if(update_error){
+            console.log(update_error);
+        }
 
     };
 
@@ -38,7 +41,7 @@ function UpdateProduct(){
             <div>Update</div>
             <div>
                 <label>Select Product: </label>
-                <select onChange={(e) => { setProduct(e.target.value); }}>
+                <select onChange={(e) => { setProduct_id(e.target.value); }}>
                     {products.map((val,index) => {
                         return <option key={index}  value={val.product_id}>{val.name}</option>
                     })}

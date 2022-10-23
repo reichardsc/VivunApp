@@ -1,19 +1,19 @@
-import React, {Fragment,useEffect, userEffect, useState} from 'react'
-import {useMutation, useQuery, gql} from '@apollo/client'
-import {LOAD_PRODUCTS} from '../../graphQL/Queries' 
-import {CREATE_PRODUCT, DELETE_PRODUCT} from '../../graphQL/Mutations' 
-import Product from "./Product";
+import React, {Fragment,useEffect, userEffect, useState} from 'react';
+import {useMutation, useQuery, gql} from '@apollo/client';
+import {LOAD_PRODUCTS} from '../../graphQL/Queries';
+import {CREATE_PRODUCT, DELETE_PRODUCT} from '../../graphQL/Mutations' ;
+
 
 function DeleteProduct(){
-    const [product_id, setProduct_id] = useState("");
     const {product_get_error, loading, data}  = useQuery(LOAD_PRODUCTS);
-    const [deleteProduct, {delete_error}] = useMutation(DELETE_PRODUCT)
-    const [products, setProducts] = useState([])
-    const [del_product_id, setProduct] = useState([])
+    const [deleteProduct, {delete_error}] = useMutation(DELETE_PRODUCT);
+    const [products, setProducts] = useState([]);
+    const [del_product_id, setProduct] = useState([]);
 
     useEffect(() => {
         if(data){
             setProducts(data.product);
+            setProduct(data.product[0].product_id);
         }
         
     }, [data]);
@@ -22,7 +22,8 @@ function DeleteProduct(){
         deleteProduct ({
             variables: {
                 product_id: del_product_id
-            }
+            },
+            refetchQueries : [{query:LOAD_PRODUCTS }]
         })
 
         if(delete_error){

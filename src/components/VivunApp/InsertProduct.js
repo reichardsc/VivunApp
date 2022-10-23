@@ -1,12 +1,12 @@
-import React, {Fragment,useEffect, userEffect, useState} from 'react'
-import {useMutation, useQuery, gql} from '@apollo/client'
-import {CREATE_PRODUCT} from '../../graphQL/Mutations' 
-import Product from "./Product";
+import React, {Fragment,useEffect, userEffect, useState} from 'react';
+import {useMutation, useQuery, gql} from '@apollo/client';
+import {LOAD_PRODUCTS} from '../../graphQL/Queries' ;
+import {CREATE_PRODUCT} from '../../graphQL/Mutations' ;
 
 function InsertProduct(){
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
-    const [createProduct, {error}] = useMutation(CREATE_PRODUCT)
+    const [createProduct, {error}] = useMutation(CREATE_PRODUCT);
 
 
     const addProduct = () => {
@@ -14,7 +14,8 @@ function InsertProduct(){
             variables: {
                 name: name,
                 price: price
-            }
+            },
+            refetchQueries : [{query:LOAD_PRODUCTS }]
         })
 
         if(error){

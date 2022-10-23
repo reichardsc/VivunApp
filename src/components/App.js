@@ -9,6 +9,8 @@ import InsertProduct from "./VivunApp/InsertProduct";
 import useAccessToken from "../hooks/useAccessToken";
 import DeleteProduct from "./VivunApp/DeleteProduct";
 import UpdateProduct from "./VivunApp/UpdateProduct";
+import GetTotalSales from "./VivunApp/TotalSalesReport";
+import PurchaseProductForm from "./VivunApp/PurchaseProductForm";
 
 const errorLink = onError(({graphqlErrors, networkError}) => {
   if(graphqlErrors){
@@ -50,19 +52,28 @@ function App(){
       </div>
       <div className="row container-fluid p-left-right-0 m-left-right-0">
           <div className="row col-md-12 p-left-right-0 m-left-right-0">
-            <div className="col-md-3 sliderMenu p-30">
-              <GetProducts />
+            <div className="col-md-3 p-30 bg-gray border-right">
+              <GetProducts></GetProducts>
             </div>
-            <div className="col-md-3 sliderMenu p-30 bg-gray border-right">
-              <InsertProduct />
+            <div className="col-md-3 p-30 bg-gray border-right">
+              <InsertProduct></InsertProduct>
             </div>
-            <div className="col-md-3 sliderMenu p-30 bg-gray border-right">
-              <DeleteProduct />
+            <div className="col-md-3  p-30 bg-gray border-right">
+              <DeleteProduct></DeleteProduct>
             </div>
-            <div className="col-md-3 sliderMenu p-30 bg-gray border-right">
-              <UpdateProduct />
+            <div className="col-md-3  p-30 bg-gray border-right">
+              <UpdateProduct></UpdateProduct>
             </div>
           </div>
+          <div className="row col-md-12 p-left-right-0 m-left-right-0">
+            <div className="col-md-3 p-30 bg-gray border-right">
+             <PurchaseProductForm></PurchaseProductForm>
+            </div>
+            <div className="col-md-3 p-30 bg-gray border-right">
+              <GetTotalSales></GetTotalSales>
+            </div>
+          </div>
+
         </div>
      </div>
       

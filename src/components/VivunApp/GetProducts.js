@@ -1,11 +1,10 @@
-import React, {Fragment,useEffect, userEffect, useState} from 'react'
-import {useQuery, gql} from '@apollo/client'
-import {LOAD_PRODUCTS} from '../../graphQL/Queries' 
-import Product from "./Product";
+import React, {Fragment,useEffect, userEffect, useState} from 'react';
+import {useQuery, gql} from '@apollo/client';
+import {LOAD_PRODUCTS} from '../../graphQL/Queries' ;
 
 function GetProducts() {
     const {error, loading, data}  = useQuery(LOAD_PRODUCTS);
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
         if(data){
