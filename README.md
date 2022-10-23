@@ -11,4 +11,4 @@ Tech stack
 Run the React app
 -----------------
 
-Run `npm start` to start the app.
+Run `yarn start` to start the app.
