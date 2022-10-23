@@ -27,7 +27,9 @@ What I Learned
 Every one of the tools used is almost entirely new to me. So this was a good introductary exercise into some of these tools.
 
 Hasura doesn't like it when you capitalize tables/columns in the database. It breaks when you try to make a view or a join.
+
 Hasura is a very powerful tool that can make quick POC applications easy.
+
 When using Hasura 
     you must include your x-hasura-admin-secret in the header of your link or it wont work;
         or set the configurations in Hasura to not require auth for the api calls.
@@ -40,7 +42,9 @@ At first I tried starting a kotlin - react app with springboot, but once I got H
 Reference Objects
 ------------------
 Customer { Customer_Id: Int, FirstName: String, LastName: String}
+
 Product {Product_Id: Int, Name: String, Price: Int}
+
 Sale {Sale_Id: Int, Customer_Id: Int, Product_Id: Int}
 
 
@@ -66,4 +70,5 @@ Links
 Run the React app
 -----------------
 npm install react-scripts --save
+
 yarn start
